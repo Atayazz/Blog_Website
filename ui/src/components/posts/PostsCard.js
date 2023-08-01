@@ -1,17 +1,17 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Link, Typography } from '@mui/material'
 import software from '../../static/software.jpg'
 
-const PostsCard = () => {
+const PostsCard = ({myDirection}) => {
   return (
     <Box mt={3} > 
-        <Link href="#" sx={{textDecoration:"none"}}>
+        <Link href="http://localhost:3002/details" sx={{textDecoration:"none"}}>
 
         <Card>
-          <Box sx={{display:'flex', flexDirection:'row'}}>
-            <CardMedia component={'img'} height='300' image={software} alt="software_image"
-            sx={{width:'400px', cursor:'pointer', "&:hover":{
+          <Box sx={{display: {xs:"block", sm:`${myDirection}`,  md:`${myDirection}`}, flexDirection:"row"}}>
+            <CardMedia component={"img"} height="300" image={software} alt="software_image"
+            sx={{width:"400px", cursor:"pointer", "&:hover":{
               opacity:0.8,
-              boxSizing:'border-box',
+              boxSizing:"border-box",
               zIndex:1,
               transition:`all 0.50s ease`  
             },}} />

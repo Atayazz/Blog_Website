@@ -1,4 +1,4 @@
-import { Box,Card, Typography, CardMedia, TextField, Button, IconButton } from '@mui/material';
+import { Box,Card, Typography, CardMedia, TextField, IconButton } from '@mui/material';
 import aaa from '../../static/aaa.jpeg'
 import {Send as SendIcon} from '@mui/icons-material'
 
@@ -18,7 +18,8 @@ const Rightbar = () => {
             },}} />
             <Typography align="left" variant="body1" >
             {" "}
-            EXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLE. {" "}
+            EXAMPLEEXAMPLEEXAMPLEEXAMPLEEX
+            AMPLEEXAMPLEEXAMPLEEXAMPL. {" "}
             </Typography>
             <Typography align="left" variant="body1">
             {" "}
@@ -29,7 +30,7 @@ const Rightbar = () => {
         Ads hire
       </Typography>
     </Card>
-    <Typography align="center" color='white' >
+    <Typography align="center" color='white' bgcolor='green' mt={2} >
       Subscribe Via E-Mail
     </Typography>
     <Box sx={{pl:10}}>
@@ -39,6 +40,11 @@ const Rightbar = () => {
         <SendIcon sx={{ color:'green'}}/>
       </IconButton>
     </Box>
+    <Card sx={{height:'200px', marginTop:2}}>
+      <Typography align="center" variant="body1" >
+        Ads hire
+      </Typography>
+    </Card> 
     </Box>
   )
 };

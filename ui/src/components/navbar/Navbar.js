@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {AppBar, Box, Drawer, Link, List, ListItem, ListItemButton, styled, TextField, Toolbar, Typography} from '@mui/material';
+import {AppBar, Box, Drawer, List, ListItem, ListItemButton, styled, TextField, Toolbar, Typography} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 const Navbar = () => {
     const StyledToolbar = styled(Toolbar)({
@@ -30,7 +30,7 @@ const Navbar = () => {
             </Box>
             <MenuBox flex={1} sx={{display:{ xs: 'none', md: "flex"}}} >
                 {MenuItems.map((item)=>(
-                    <Typography variant='body2' color={'black'}> 
+                    <Typography variant='body2' > 
                     {item.Name}
                     </Typography>
                 ) )}

@@ -1,17 +1,16 @@
-import { Typography, styled, Box, Stack } from "@mui/material";
+import {  Typography, styled, Box, Stack } from "@mui/material";
 import software from '../../static/software.jpg';
 import finans from '../../static/finans.jpg';
 import news from '../../static/news.jpg';
 import spor from '../../static/spor.jpg';
 
-const Category = () => {
+const Suggestions = () => {
     const StyledCard = styled(Box)(({theme})=>({
         display: 'flex',
         justifyContent: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        borderRadius:'100%',
         overflow:'hidden',
         width: '100px',
         cursor:'pointer',
@@ -41,7 +40,7 @@ const Category = () => {
 
     });
   return (
-    <Stack Container direction={'row'} mt={4} spacing={3} ml={3} 
+    <Stack Container direction={'row'} justifyContent="center" alignItems={"center"} mt={4} spacing={3} ml={3} 
     sx={{overflow:'auto'}}>
     
         <CardBox>
@@ -72,7 +71,7 @@ const Category = () => {
             <StyledTypography>Software</StyledTypography>
         </CardBox>
     </Stack>
-  )
+  ) 
 }
 
-export default Category;
+export default Suggestions;
