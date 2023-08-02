@@ -29,6 +29,7 @@ const DetailsPage = () => {
   return (
     <Container>
         <Category />
+
         <Typography variant="h3" align ="center" mt={4}>
         {blogDetails.title}
         </Typography>
@@ -46,9 +47,7 @@ const DetailsPage = () => {
             alt='news'
             />
         </Box>
-        <Typography variant="body1" align="center" m={2}>
-            kasbjdkjabskdbaksbdvkasjvbdjkashvbjdh 
-        </Typography>
+
         <Typography variant="h3" align="center" m={2} color={'green'}>
             {blogDetails.content2}
         </Typography>

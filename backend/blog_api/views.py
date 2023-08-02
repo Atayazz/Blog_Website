@@ -4,9 +4,10 @@ from .serializers import blogSerializer, categorySerializer
 from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework.response import Response
-# Create your views here.
+from rest_framework.filters import OrderingFilter
 
-class blogApiView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+class blogApiView(viewsets.ModelViewSet):
+    filter_backends = (OrderingFilter,)
     queryset = blog.objects.all()
     serializer_class = blogSerializer
     lookup_field = 'slug'

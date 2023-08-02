@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import {AppBar, Box, Drawer, List, ListItem, ListItemButton, styled, TextField, Toolbar, Typography} from '@mui/material';
+
+import {Link, AppBar, Box, Drawer, List, ListItem, ListItemButton, styled, TextField, Toolbar, Typography} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import PostSearch from '../search/PostSearch';
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
         cursor: "pointer",
     })
     const MenuItems = [
-        {Name:"Home", Link: "#"},
+        {Name:"Home", Link: "/"},
         {Name:"Posts", Link: "#"},
         {Name:"About Me", Link: "#"},
         {Name:"Subscribe", Link: "#"}
@@ -31,9 +32,11 @@ const Navbar = () => {
             </Box>
             <MenuBox flex={1} sx={{display:{ xs: 'none', md: "flex"}}} >
                 {MenuItems.map((item)=>(
+                    <Link href={item.Link}>
                     <Typography variant='body2' > 
                     {item.Name}
                     </Typography>
+                    </Link>
                 ) )}
             </MenuBox>
             <Box flex={1}>

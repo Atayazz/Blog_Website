@@ -60,7 +60,7 @@ const Category = () => {
     >
     
 {cat.map(category => (
-    <Link href={`category/${category.id}`} sx={{textDecoration:'none'}}>
+    <Link href={`/category/${category.id}`} sx={{textDecoration:'none'}}>
          <CardBox>
          <StyledCard sx={{ backgroundImage:`url(${category.image})`}} />
          <StyledTypography>{category.name}</StyledTypography>

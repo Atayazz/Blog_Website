@@ -1,0 +1,17 @@
+### Django ###
+
+*.log
+
+*.pot
+
+*.pyc
+
+__pycache__/
+
+**/__pycache__/
+
+**/*.pyc
+
+local_settings.py
+
+venv

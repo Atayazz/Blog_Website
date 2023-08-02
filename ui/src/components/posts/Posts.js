@@ -9,14 +9,14 @@ const Posts = () => {
   useEffect( () => {
     const fetchData = async () => {
       try{
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs/`)
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs/`, {params:{ordering:"title"}})
           setBlog(res.data) 
     } catch (error) {
       console.log(error)
     }
   }
   fetchData()
-  }, [])
+  },[] )
 
   const [post, setPost] = useState([])
   
