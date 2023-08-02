@@ -13,12 +13,13 @@ const PostsCard = ({myDirection, title, excerpt, blogHref, image}) => {
               boxSizing:"border-box",
               zIndex:1,
               transition:`all 0.50s ease`  
-            },}} />
-            <CardContent>
-              <Typography gutterBottom variant="h4" align="center"> 
+            },}} 
+            />
+            <CardContent sx={{minHeight:'260px'}}>
+              <Typography gutterBottom variant="h5" align="center"> 
                 {title}
              </Typography>
-              <Typography  variant="h5" color="text.secondary "> 
+              <Typography  variant="h7" color="text.secondary "> 
               {excerpt}
             </Typography>
               <CardActions>

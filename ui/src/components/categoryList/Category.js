@@ -1,10 +1,24 @@
-import { Typography, styled, Box, Stack } from "@mui/material";
-import software from '../../static/software.jpg';
-import finans from '../../static/finans.jpg';
-import news from '../../static/news.jpg';
-import spor from '../../static/spor.jpg';
+import {  Link, Typography, styled, Box, Stack } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 const Category = () => {
+
+    const [cat, setCat] = useState([])
+  
+  useEffect( () => {
+    const fetchData = async () => {
+      try{
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/category/`)
+          setCat(res.data) 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  fetchData()
+  }, [])
+
     const StyledCard = styled(Box)(({theme})=>({
         display: 'flex',
         justifyContent: 'center',
@@ -42,35 +56,18 @@ const Category = () => {
     });
   return (
     <Stack Container direction={'row'} mt={4} spacing={3} ml={3} 
-    sx={{overflow:'auto'}}>
+    sx={{ maxWidth:"100%", overflow:'auto'}}
+    >
     
-        <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${software})`}}></StyledCard>
-            <StyledTypography>Software</StyledTypography>
-        </CardBox>
-        <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${finans})`}}></StyledCard>
-            <StyledTypography>Finance</StyledTypography>
-        </CardBox>
-        <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${news})`}}></StyledCard>
-            <StyledTypography>News</StyledTypography>
-        </CardBox> <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${spor})`}}></StyledCard>
-            <StyledTypography>Sport</StyledTypography>
-        </CardBox> <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${software})`}}></StyledCard>
-            <StyledTypography>Software</StyledTypography>
-        </CardBox> <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${software})`}}></StyledCard>
-            <StyledTypography>Software</StyledTypography>
-        </CardBox> <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${software})`}}></StyledCard>
-            <StyledTypography>Software</StyledTypography>
-        </CardBox> <CardBox>
-            <StyledCard sx={{ backgroundImage:`url(${software})`}}></StyledCard>
-            <StyledTypography>Software</StyledTypography>
-        </CardBox>
+{cat.map(category => (
+    <Link href={`category/${category.id}`} sx={{textDecoration:'none'}}>
+         <CardBox>
+         <StyledCard sx={{ backgroundImage:`url(${category.image})`}} />
+         <StyledTypography>{category.name}</StyledTypography>
+       </CardBox>
+       </Link>
+          )) }
+
     </Stack>
   )
 }

@@ -25,11 +25,7 @@ const Rightbar = () => {
             {" "}
             Don't forget to subscribe! <br /> <a href="google.com">Read More</a>
             </Typography>
-    <Card sx={{height:'200px', marginTop:2}}>
-      <Typography align="center" variant="body1" >
-        Ads hire
-      </Typography>
-    </Card>
+    
     <Typography align="center" color='white' bgcolor='green' mt={2} >
       Subscribe Via E-Mail
     </Typography>
@@ -40,11 +36,7 @@ const Rightbar = () => {
         <SendIcon sx={{ color:'green'}}/>
       </IconButton>
     </Box>
-    <Card sx={{height:'200px', marginTop:2}}>
-      <Typography align="center" variant="body1" >
-        Ads hire
-      </Typography>
-    </Card> 
+    
     </Box>
   )
 };

@@ -21,3 +21,9 @@ class CategoryPostApiView(viewsets.ViewSet):
         queryset = blog.objects.filter(category=pk)
         serializer = blogSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+class PopularPostsApiView(viewsets.ViewSet):
+    def list(self, request,pk=None):
+        queryset = blog.objects.filter(postlabel__iexact='POPULAR').order_by('-id')[0:4]
+        serializer = blogSerializer(queryset, many=True)
+        return Response(serializer.data)

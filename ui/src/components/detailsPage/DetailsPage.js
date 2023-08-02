@@ -3,50 +3,72 @@ import { Box, CardMedia, Container, List, ListItemButton, ListItemIcon, ListItem
 import Category from "../categoryList/Category";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import Suggestions from '../suggestions/Suggestions';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const DetailsPage = () => {
+
+    const [blogDetails, setblogDetails] = useState([])
+    const [postKeywords, setPostKeywords ] = useState('')
+    let {slug} = useParams()
+    useEffect( () => {
+      const fetchData = async () => {
+        try{
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs/${slug}`)
+            setblogDetails(res.data) 
+            setPostKeywords(res.data.keywords)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData()
+    }, [])
+
+
   return (
     <Container>
         <Category />
         <Typography variant="h3" align ="center" mt={4}>
-            Title
+        {blogDetails.title}
         </Typography>
         <Typography variant="body2" align="center" color="GrayText" p={4}>
             yazı yazı yazı yazı
         </Typography>
         <Typography variant="body1" align="center" m={2}> 
-         yaayyayayayasıduyanısutdıausbtdıbaustdıuatsduıatdub
+         {blogDetails.content}
         </Typography>
         <Box sx={{display:'flex', justifyContent:'center' }}>
             <CardMedia 
             sx={{height:'500px', width:'500px'}}
             component='img'
-            image={news}
+            image={blogDetails.image}
             alt='news'
             />
         </Box>
         <Typography variant="body1" align="center" m={2}>
-            kasbjdkjabskdbaksbdvkasjvbdjkashvbjdh
+            kasbjdkjabskdbaksbdvkasjvbdjkashvbjdh 
         </Typography>
         <Typography variant="h3" align="center" m={2} color={'green'}>
-            Konu Başlıkları
+            {blogDetails.content2}
+        </Typography>
+        <Typography variant="h3" align="center" m={2} color={'green'}>
+            Topic Headings
         </Typography>
         <List>
+            {postKeywords.split(',').map((keywords)=>
             <ListItemButton>
             <ListItemIcon>
                 <DoubleArrowIcon />
             </ListItemIcon>
-            <ListItemText primary='Earth' />
+            <ListItemText primary={keywords} />
+            </ListItemButton> )}
 
-            </ListItemButton>
         </List>
         <Typography variant="body1" align="center" m={2}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod ex vel tellus faucibus
+        {blogDetails.content2}
         </Typography>
-        <Typography variant="h5" color={"white"} bgcolor={"grey"} align="center">
-            You may also like 
-        </Typography>
-        <Suggestions/>
+        
     </Container>
   )
 }

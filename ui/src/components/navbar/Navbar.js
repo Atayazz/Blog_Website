@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {AppBar, Box, Drawer, List, ListItem, ListItemButton, styled, TextField, Toolbar, Typography} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import PostSearch from '../search/PostSearch';
 const Navbar = () => {
     const StyledToolbar = styled(Toolbar)({
         display:'flex',
@@ -36,11 +37,8 @@ const Navbar = () => {
                 ) )}
             </MenuBox>
             <Box flex={1}>
-                <TextField sx={{display:{ xs: 'none', md: "flex"}}} 
-                color="success" 
-                label="Search Here!" 
-                variant="standard" 
-                />
+               
+                <PostSearch />
                 <MenuIcon
                     sx={{display:{ xs: "flex", md:"none" }, cursor: "pointer" }} 
                     onClick={()=>setOpenMenu(!openMenu)}
@@ -73,7 +71,7 @@ const Navbar = () => {
 
     </Typography>
     <Typography  variant="h5" color={'green'} align="center" sx={{fontFamily:'Bebas Neue sans-serif'}} >
-        Kişisel Blog Websitesi
+        Personal Blog Website
     </Typography>
 </Box>
 </>

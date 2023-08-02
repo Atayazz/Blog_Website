@@ -16,10 +16,10 @@ const Hero = () => {
 
         cursor:'pointer',
         [theme.breakpoints.up('md')]:{
-            height: 400,
+            height: 0,
         },
         [theme.breakpoints.down('md')]:{
-            height: 200,
+            height: 0,
         },
         "&:hover":{
             opacity:0.8,
@@ -32,7 +32,7 @@ const Hero = () => {
         textAlign:"center",
         color:"white",
         background:"green",
-        fontSize:20,
+        fontSize:0,
     });
     const StyledWrapper =styled(Box)(({theme})=>({
         [theme.breakpoints.up('md')]:{
