@@ -1,27 +1,42 @@
-import { Box, Grid, Pagination, Stack, Typography } from '@mui/material'
-import React from 'react'
-import PostsCard from './PostsCard'
+import { Box, Grid, Pagination, Stack, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import PostsCard from './PostsCard';
+import axios from 'axios'
 
 const Posts = () => {
+  const [blog, setBlog] = useState([])
+  
+  useEffect( () => {
+    const fetchData = async () => {
+      try{
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs/`)
+          setBlog(res.data) 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  fetchData()
+  }, [])
   return (
     <Box>
-        <Typography variant='h4' align='center'>Latest Posts</Typography>
+        <Typography variant='h4' align='center'>
+          {" "}
+          Latest Posts{" "}
+        
+        </Typography>
         <Grid 
-        container 
-        columnSpacing={{xs:0, sm:1, md:1}} 
-        direction={'column'}
+         container 
+         columnSpacing={{xs:0, sm:1, md:1}} 
+         direction={"column"}
         >
-            <Grid item xs> 
-            <PostsCard myDirection={'flex'} />
-            </Grid>
-            <Grid item xs> 
-            <PostsCard myDirection={'flex'} />
-            </Grid>
-            <Grid item xs> 
-            <PostsCard myDirection={'flex'} />
-            </Grid>
-            </Grid>
-
+          {blog.map(post => (
+        <Grid item xs> 
+        <PostsCard title={post.title} excerpt={post.excerpt} image={post.image} myDirection={'flex'} />
+        </Grid>
+          ))
+           
+          }
+        </Grid>
             <Typography
             variant="h4"
             bgcolor={"black"}
